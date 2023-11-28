@@ -19,7 +19,7 @@ app.use("/api/messages", messageRoute);
 
 // connect Database
 mongoose
-  .connect(process.env.MONGO_URL)
+  .connect("mongodb+srv://user:user@cluster0.vzbvr74.mongodb.net/CHAT_APP?retryWrites=true&w=majority")
   .then(() => {
     console.log("DB Connection Successfull");
   })
@@ -28,13 +28,13 @@ mongoose
   });
 
 // create server
-const server = app.listen(process.env.PORT, () => {
-  console.log(`Server Started on Port ${process.env.PORT} `);
+const server = app.listen(5000, () => {
+  console.log(`Server Started on Port ${5000} `);
 });
 
 const io = socket(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://chat-ahir.onrender.com",
     credentials: true,
   },
 });
